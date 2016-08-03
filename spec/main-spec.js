@@ -49,6 +49,7 @@ describe('string-test3', () => {
     </footer>
 </section>
 `
+    require('fs').writeFileSync('expect.txt',expected);
     expect(result).toEqual(expected);
   });
 

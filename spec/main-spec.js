@@ -60,6 +60,7 @@ describe('string-test3', () => {
       {name: '睡觉', completed: false}
     ];
     let result = generateTodoHtml(todoItems);
+    require('fs').writeFileSync('2.txt',result);
     let expected = `
 <section>
     <header>

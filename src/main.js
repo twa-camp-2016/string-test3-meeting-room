@@ -1,12 +1,18 @@
 function generateTodoHtml(todoItems) {
-  let result="";
-  todoItems.map(todoItem =>{
-result+= ` <li>
-               <div><input type="checkbox" checked="checked"/><label>${todoItem.name}</label></div>
-               <form><input type="text"/></form>
-          </li>
-`;});
-  let expected = `
+  let result="";let count=0;
+  for(let {name,completed} of todoItems)
+  {
+      let items="";
+      if(completed)
+      {    items=`<div><input type="checkbox" checked="checked"/>`;}
+      else{ items=`<div><input type="checkbox"/>`;count++;}
+    result+=`
+            <li>
+                ${items}<label>${name}</label></div>
+                <form><input type="text"/></form>
+            </li>`
+  }
+  let list = `
 <section>
     <header>
         <h1>todos</h1>
@@ -15,12 +21,12 @@ result+= ` <li>
     <section>
         <input type="checkbox"/>
         <label for="toggle-all">Mark all as complete</label>
-        <ul>
-           ${result.trim()}
-</ul>
+        <ul>`;
+      let lists= `
+        </ul>
     </section>
     <footer>
-        <strong>2</strong> items left
+        <strong>${count}</strong> items left
         <ul>
             <li><a href="#/">All</a></li>
             <li><a href="#/active">Active</a></li>
@@ -29,8 +35,9 @@ result+= ` <li>
         <button>Clear completed</button>
     </footer>
 </section>`;
+    let expected=`${list+result+lists}`;
   require(`fs`).writeFileSync('./1.txt',expected);
-  return result;
+  return expected;
 }
 
 module.exports = {generateTodoHtml

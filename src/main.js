@@ -1,5 +1,5 @@
 function generateTodoHtml(todoItems) {
-
+  let num=0;
   let result =`
 <section>
     <header>
@@ -9,27 +9,25 @@ function generateTodoHtml(todoItems) {
     <section>
         <input type="checkbox"/>
         <label for="toggle-all">Mark all as complete</label>
-        <ul>
+        <ul>`;
+  todoItems.forEach(({name,completed})=>{
+    let check='';
+    if(completed===false){
+      num++;
+    }else{
+      check+=` checked="checked"`;
+    }
+    result+=`
             <li>
-                <div><input type="checkbox" checked="checked"/><label>${todoItems[0].name}</label></div>
+                <div><input type="checkbox"${check}/><label>${name}</label></div>
                 <form><input type="text"/></form>
-            </li>
-            <li>
-                <div><input type="checkbox"/><label>${todoItems[1].name}</label></div>
-                <form><input type="text"/></form>
-            </li>
-            <li>
-                <div><input type="checkbox" checked="checked"/><label>${todoItems[2].name}</label></div>
-                <form><input type="text"/></form>
-            </li>
-            <li>
-                <div><input type="checkbox"/><label>${todoItems[3].name}</label></div>
-                <form><input type="text"/></form>
-            </li>
+            </li>`;
+  });
+  result+=`
         </ul>
     </section>
     <footer>
-        <strong>2</strong> items left
+        <strong>${num}</strong> items left
         <ul>
             <li><a href="#/">All</a></li>
             <li><a href="#/active">Active</a></li>

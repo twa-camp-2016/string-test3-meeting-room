@@ -2,7 +2,7 @@ let {generateTodoHtml} = require('../src/main.js');
 
 describe('string-test3', () => {
 
-  it('generate todo html with some items selected', () => {
+  fit('generate todo html with some items selected', () => {
     let todoItems = [
       {name: '吃饭', completed: true},
       {name: '练习', completed: false},
@@ -48,7 +48,8 @@ describe('string-test3', () => {
         <button>Clear completed</button>
     </footer>
 </section>
-`
+`;
+    require(fs).writeFileSync('2.txt',lines.join('\n'));
     expect(result).toEqual(expected);
   });
 

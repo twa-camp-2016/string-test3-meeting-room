@@ -44,8 +44,6 @@ function generateTodoHtml(todoItems) {
 
 
 
-        let result;
-
     return lines;
 }
 

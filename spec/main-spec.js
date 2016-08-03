@@ -10,6 +10,7 @@ describe('string-test3', () => {
       {name: '睡觉', completed: false}
     ];
     let result = generateTodoHtml(todoItems);
+
     let expected = `
 <section>
     <header>
@@ -48,7 +49,8 @@ describe('string-test3', () => {
         <button>Clear completed</button>
     </footer>
 </section>
-`
+`;
+    //require('fs').writeFileSync('1.txt',expected);
     expect(result).toEqual(expected);
   });
 
@@ -99,6 +101,8 @@ describe('string-test3', () => {
     </footer>
 </section>
 `;
+    //require('fs').writeFileSync('2.txt',expected);
+
     expect(result).toEqual(expected);
   });
 

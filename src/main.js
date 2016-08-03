@@ -1,32 +1,37 @@
 function generateTodoHtml(todoItems) {
-  return /**/
+  let line;
+  let num=0;
+  line=`
+<section>
+    <header>
+        <h1>todos</h1>
+        <form><input type="text" autofocus="" placeholder="What needs to be done?"/></form>
+    </header>
+    <section>
+        <input type="checkbox"/>
+        <label for="toggle-all">Mark all as complete</label>
+        <ul>\n`;
 
-  let line=`<section>\n`;
-   line +=`    <header>\n`;
-  line +=`        <h1>todos</h1>\n`;
-  line+=`        <form><input type="text" autofocus="" placeholder="What needs to be done?"/></form>\n`;
-  line+=`    </header>`;
-  line+=`    <section>`;
-  line += `        <input type="checkbox"/>`;
-  line+=`        <label for="toggle-all">Mark all as complete</label>`;
-  line +=`        <ul>`;
   for(let item of todoItems){
     if(item.completed===true){
-    line +=`            <li>`;
-    line += `                <div><input type="checkbox" checked="checked"/><label>${item.name}</label></div>`;
-    line+=`                <form><input type="text"/></form>`;
-    line += `            </li>`;}
+      line+=`            <li>
+                <div><input type="checkbox" checked="checked"/><label>${item.name}</label></div>
+                <form><input type="text"/></form>
+            </li>\n`;
+    }
     else{
-      line +=`            <li>`;
-      line += `                <div><input type="checkbox"/><label>${item.name}</label></div>`;
-      line+=`                <form><input type="text"/></form>`;
-      line += `            </li>`
+      line+=`            <li>
+                <div><input type="checkbox"/><label>${item.name}</label></div>
+                <form><input type="text"/></form>
+            </li>\n`;
+      num++;
     }
   }
-  line +=`</ul>
+
+  line +=`        </ul>
     </section>
     <footer>
-        <strong>2</strong> items left
+        <strong>${num}</strong> items left
         <ul>
             <li><a href="#/">All</a></li>
             <li><a href="#/active">Active</a></li>
@@ -34,7 +39,10 @@ function generateTodoHtml(todoItems) {
         </ul>
         <button>Clear completed</button>
     </footer>
-</section>`
+</section>
+`;
+
+  require('fs').writeFileSync('1.txt',line);
   return line;
 }
 

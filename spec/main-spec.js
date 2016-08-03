@@ -48,7 +48,7 @@ describe('string-test3', () => {
         <button>Clear completed</button>
     </footer>
 </section>
-`
+`;
     expect(result).toEqual(expected);
   });
 

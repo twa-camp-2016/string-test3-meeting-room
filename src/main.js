@@ -2,43 +2,55 @@
 function generateTodoHtml(todoItems) {
   let todoList = todoItems.map(({name,completed})=>{
     if(completed){
-      return {name, checkString: ` checked="checked"`};
+      return {name,checkString:` checked="checked"`};
     }else {
       return {name,checkString:""};
     }
+  });
 
-  })
-  let lines = ['<section>'];
-  lines.push('    <header>');
-  lines.push('        <h1>todos</h1>');
-  lines.push('        <form><input type="text" autofocus="" placeholder="What needs to be done?"/></form>');
-  lines.push('    </header>');
-  lines.push('    <section>');
-  lines.push('        <input type="checkbox"/>');
-  lines.push('        <label for="toggle-all">Mark all as complete</label>');
-  lines.push('        <ul>');
+let num =0;
+  let todoString = `
+<section>
+    <header>
+        <h1>todos</h1>
+        <form><input type="text" autofocus="" placeholder="What needs to be done?"/></form>
+    </header>
+    <section>
+        <input type="checkbox"/>
+        <label for="toggle-all">Mark all as complete</label>
+        <ul>
+`;
   for(let {name,checkString} of todoList){
-    lines.push('            <li>');
-    lines.push(`                <div><input type="checkbox"${checkString}/><label>${name}</label></div>`)
-    lines.push('                <form><input type="text"/></form>');
-    lines.push('            </li>');
+      todoString+=`            <li>
+                <div><input type="checkbox"${checkString}/><label>${name}</label></div>
+                <form><input type="text"/></form>
+            </li>
+`;
+      if(checkString.length===0){
+        num++;
+      }
   }
 
-  lines.push('        </ul>');
-  lines.push('    </section>');
-  lines.push('    <footer>');
-  lines.push('        <strong>2</strong> items left');
-  lines.push('        <ul>');
-  lines.push('            <li><a href="#/">All</a></li>');
-  lines.push('            <li><a href="#/active">Active</a></li>');
-  lines.push('            <li><a href="#/completed">Completed</a></li>');
-  lines.push('        </ul>');
-  lines.push('        <button>Clear completed</button>');
-  lines.push('    </footer>');
-  lines.push('</section>');
-  return lines.join("\n");
-}
+todoString += `        </ul>
+    </section>
+    <footer>
+`;
+todoString+=`        <strong>${num}</strong> items left
+`;
+todoString+=`        <ul>
+            <li><a href="#/">All</a></li>
+            <li><a href="#/active">Active</a></li>
+            <li><a href="#/completed">Completed</a></li>
+        </ul>
+        <button>Clear completed</button>
+    </footer>
+</section>
+`;
+  require('fs').writeFileSync('./1.txt',todoString);
 
+  return todoString;
+
+}
 module.exports = {
   generateTodoHtml: generateTodoHtml
 }

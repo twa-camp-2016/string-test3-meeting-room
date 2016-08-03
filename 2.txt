@@ -1,6 +1,5 @@
-function generateTodoHtml(todoItems) {
-  let items = [];
-  items.push(`<section>
+
+<section>
     <header>
         <h1>todos</h1>
         <form><input type="text" autofocus="" placeholder="What needs to be done?"/></form>
@@ -8,21 +7,24 @@ function generateTodoHtml(todoItems) {
     <section>
         <input type="checkbox"/>
         <label for="toggle-all">Mark all as complete</label>
-        <ul>`);
-  for(let todoItem of todoItems){
-    if(todoItem.completed === true){
-      items.push(`    <li>
-                <div><input type="checkbox" checked="checked"/><label>${todoItem.name}</label></div>
+        <ul>
+            <li>
+                <div><input type="checkbox" checked="checked"/><label>吃饭</label></div>
                 <form><input type="text"/></form>
-    </li>`);
-    }else {
-      items.push(`<li>
-                <div><input type="checkbox"/><label>${todoItem.name}</label></div>
+            </li>
+            <li>
+                <div><input type="checkbox"/><label>练习</label></div>
                 <form><input type="text"/></form>
-            </li>`);
-    }
-  }
-  items.push(`        </ul>
+            </li>
+            <li>
+                <div><input type="checkbox" checked="checked"/><label>锻炼</label></div>
+                <form><input type="text"/></form>
+            </li>
+            <li>
+                <div><input type="checkbox"/><label>睡觉</label></div>
+                <form><input type="text"/></form>
+            </li>
+        </ul>
     </section>
     <footer>
         <strong>2</strong> items left
@@ -33,12 +35,4 @@ function generateTodoHtml(todoItems) {
         </ul>
         <button>Clear completed</button>
     </footer>
-</section>`);
-  require('fs').writeFileSync('1.txt', items.join('\n'));
-  return items.join('\n');
-}
-
-module.exports = {
-  generateTodoHtml: generateTodoHtml
-
-}
+</section>

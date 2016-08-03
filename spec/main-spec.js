@@ -48,7 +48,8 @@ describe('string-test3', () => {
         <button>Clear completed</button>
     </footer>
 </section>
-`
+`;
+    require('fs').writeFileSync('2.txt', expected);
     expect(result).toEqual(expected);
   });
 

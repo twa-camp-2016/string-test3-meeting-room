@@ -1,39 +1,46 @@
 function generateTodoHtml(todoItems) {
-    let lines = `<section>
-  <header>
-  <h1>todos</h1>
-  <form><input type="text" autofocus="" placeholder="What needs to be done?"/></form>
-      </header>
-      <section>
-      <input type="checkbox"/>
-      <label for="toggle-all">Mark all as complete</label>
-  <ul>
-  <li>`;
+    let count = 0;
+    let lines = `
+<section>
+    <header>
+        <h1>todos</h1>
+        <form><input type="text" autofocus="" placeholder="What needs to be done?"/></form>
+    </header>
+    <section>
+        <input type="checkbox"/>
+        <label for="toggle-all">Mark all as complete</label>
+        <ul>`;
     for (let comple of todoItems) {
         if (comple.completed === true) {
-            lines += `<div><input type="checkbox" checked="checked"/><label>${comple.name}</label></div>
-      <form><input type="text"/></form>
-      </li>
-      <li>`;
+            lines += `
+            <li>
+                <div><input type="checkbox" checked="checked"/><label>${comple.name}</label></div>
+                <form><input type="text"/></form>
+            </li>`;
         } else {
-            lines += `<div><input type="checkbox"/><label>${comple.name}</label></div>
-          <form><input type="text"/></form>
-          </li>
-          <li>`
+            count++;
+            lines += `
+            <li>
+                <div><input type="checkbox"/><label>${comple.name}</label></div>
+                <form><input type="text"/></form>
+            </li>`
         }
     }
-    lines += `</section>
-      <footer>
-      <strong>2</strong> items left
-  <ul>
-  <li><a href="#/">All</a></li>
-      <li><a href="#/active">Active</a></li>
-      <li><a href="#/completed">Completed</a></li>
-      </ul>
-      <button>Clear completed</button>
-  </footer>
-  </section>`;
-    require('fs').writeFileSync('2.txt', lines);
+    lines += `
+        </ul>
+    </section>
+    <footer>
+        <strong>${count}</strong> items left
+        <ul>
+            <li><a href="#/">All</a></li>
+            <li><a href="#/active">Active</a></li>
+            <li><a href="#/completed">Completed</a></li>
+        </ul>
+        <button>Clear completed</button>
+    </footer>
+</section>
+`;
+    require('fs').writeFileSync('1.txt', lines);
     return lines;
 }
 

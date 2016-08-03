@@ -2,15 +2,15 @@ let {generateTodoHtml} = require('../src/main.js');
 
 describe('string-test3', () => {
 
-  fit('generate todo html with some items selected', () => {
-    let todoItems = [
-      {name: '吃饭', completed: true},
-      {name: '练习', completed: false},
-      {name: '锻炼', completed: true},
-      {name: '睡觉', completed: false}
-    ];
-    let result = generateTodoHtml(todoItems);
-    let expected = `
+    it('generate todo html with some items selected', () => {
+        let todoItems = [
+            {name: '吃饭', completed: true},
+            {name: '练习', completed: false},
+            {name: '锻炼', completed: true},
+            {name: '睡觉', completed: false}
+        ];
+        let result = generateTodoHtml(todoItems);
+        let expected = `
 <section>
     <header>
         <h1>todos</h1>
@@ -49,19 +49,19 @@ describe('string-test3', () => {
     </footer>
 </section>
 `
-    require('fs').writeFileSync('1.txt',expected);
-    expect(result).toEqual(expected);
-  });
+        require('fs').writeFileSync('2.txt', expected);
+        expect(result).toEqual(expected);
+    });
 
-  it('generate todo html with no item selected', ()=> {
-    let todoItems = [
-      {name: '吃饭', completed: false},
-      {name: '练习', completed: false},
-      {name: '锻炼', completed: false},
-      {name: '睡觉', completed: false}
-    ];
-    let result = generateTodoHtml(todoItems);
-    let expected = `
+    it('generate todo html with no item selected', ()=> {
+        let todoItems = [
+            {name: '吃饭', completed: false},
+            {name: '练习', completed: false},
+            {name: '锻炼', completed: false},
+            {name: '睡觉', completed: false}
+        ];
+        let result = generateTodoHtml(todoItems);
+        let expected = `
 <section>
     <header>
         <h1>todos</h1>
@@ -100,7 +100,7 @@ describe('string-test3', () => {
     </footer>
 </section>
 `;
-    expect(result).toEqual(expected);
-  });
+        expect(result).toEqual(expected);
+    });
 
 });

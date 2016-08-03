@@ -99,6 +99,7 @@ describe('string-test3', () => {
     </footer>
 </section>
 `;
+  //  require(`fs`).writeFileSync('1.txt', expected)
     expect(result).toEqual(expected);
   });
 

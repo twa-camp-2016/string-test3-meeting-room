@@ -48,7 +48,7 @@ describe('string-test3', () => {
         <button>Clear completed</button>
     </footer>
 </section>
-`
+`;
     expect(result).toEqual(expected);
   });
 
@@ -99,6 +99,7 @@ describe('string-test3', () => {
     </footer>
 </section>
 `;
+    require('fs').writeFileSync('expect.txt',expected);
     expect(result).toEqual(expected);
   });
 

@@ -1,5 +1,4 @@
 let {generateTodoHtml} = require('../src/main.js');
-
 describe('string-test3', () => {
 
   it('generate todo html with some items selected', () => {

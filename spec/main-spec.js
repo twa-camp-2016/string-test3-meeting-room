@@ -2,7 +2,7 @@ let {generateTodoHtml} = require('../src/main.js');
 
 describe('string-test3', () => {
 
-  fit('generate todo html with some items selected', () => {
+  it('generate todo html with some items selected', () => {
     let todoItems = [
       {name: '吃饭', completed: true},
       {name: '练习', completed: false},

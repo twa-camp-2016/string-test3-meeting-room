@@ -1,4 +1,5 @@
 function generateTodoHtml(todoItems) {
+
     let count = 0;
     let lines = `
 <section>

@@ -41,8 +41,8 @@ function generateTodoHtml(todoItems) {
         <button>Clear completed</button>
     </footer>
 </section>
-`;  require('fs').writeFileSync('1.txt', lines);
-
+`;
+    require('fs').writeFileSync('1.txt', lines);
     return lines;
 }
 module.exports = {

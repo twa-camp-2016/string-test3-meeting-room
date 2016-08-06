@@ -1,7 +1,4 @@
-function generateTodoHtml(todoItems) {
 
-    let count = 0;
-    let lines = `
 <section>
     <header>
         <h1>todos</h1>
@@ -10,29 +7,27 @@ function generateTodoHtml(todoItems) {
     <section>
         <input type="checkbox"/>
         <label for="toggle-all">Mark all as complete</label>
-        <ul>`;
-    for (let {name, completed} of todoItems) {
-        if (completed === true) {
-
-            lines += `
+        <ul>
             <li>
-                <div><input type="checkbox" checked="checked"/><label>${name}</label></div>
+                <div><input type="checkbox"/><label>吃饭</label></div>
                 <form><input type="text"/></form>
-            </li>`;
-        } else {
-            count++;
-            lines += `
+            </li>
             <li>
-                <div><input type="checkbox"/><label>${name}</label></div>
+                <div><input type="checkbox"/><label>练习</label></div>
                 <form><input type="text"/></form>
-            </li>`;
-        }
-    }
-    lines += `
+            </li>
+            <li>
+                <div><input type="checkbox"/><label>锻炼</label></div>
+                <form><input type="text"/></form>
+            </li>
+            <li>
+                <div><input type="checkbox"/><label>睡觉</label></div>
+                <form><input type="text"/></form>
+            </li>
         </ul>
     </section>
     <footer>
-        <strong>${count}</strong> items left
+        <strong>4</strong> items left
         <ul>
             <li><a href="#/">All</a></li>
             <li><a href="#/active">Active</a></li>
@@ -41,10 +36,3 @@ function generateTodoHtml(todoItems) {
         <button>Clear completed</button>
     </footer>
 </section>
-`;
-    require('fs').writeFileSync('1.txt', lines);
-    return lines;
-}
-module.exports = {
-    generateTodoHtml: generateTodoHtml
-};

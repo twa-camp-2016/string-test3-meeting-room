@@ -6,7 +6,7 @@ describe('string-test3', () => {
     let todoItems = [
       {name: '吃饭', completed: true},
       {name: '练习', completed: false},
-      {name: '锻炼', completed: true},
+      {name: '锻炼', completgited: true},
       {name: '睡觉', completed: false}
     ];
     let result = generateTodoHtml(todoItems);
@@ -52,7 +52,7 @@ describe('string-test3', () => {
     expect(result).toEqual(expected);
   });
 
-  fit('generate todo html with no item selected', ()=> {
+  it('generate todo html with no item selected', ()=> {
     let todoItems = [
       {name: '吃饭', completed: false},
       {name: '练习', completed: false},

@@ -1,18 +1,28 @@
-function generateTodoHtml(todoItems) {
-  let result="";let count=0;
-  for(let {name,completed} of todoItems)
-  {
-      let items="";
-      if(completed)
-      {    items=`<div><input type="checkbox" checked="checked"/>`;}
-      else{ items=`<div><input type="checkbox"/>`;count++;}
-    result+=`
+function generateTodoHtml(todoItems)
+{
+    let list="";
+    let count=0;
+    for(let {name,completed} of todoItems)
+    {
+        if(completed)
+        {
+            list+=`
             <li>
-                ${items}<label>${name}</label></div>
+                <div><input type="checkbox" checked="checked"/><label>${name}</label></div>
                 <form><input type="text"/></form>
             </li>`
-  }
-  let list = `
+        }
+        else
+        {
+            list+=`
+            <li>
+                <div><input type="checkbox"/><label>${name}</label></div>
+                <form><input type="text"/></form>
+            </li>`;
+            count++
+        }
+    }
+    let lists = `
 <section>
     <header>
         <h1>todos</h1>
@@ -22,7 +32,7 @@ function generateTodoHtml(todoItems) {
         <input type="checkbox"/>
         <label for="toggle-all">Mark all as complete</label>
         <ul>`;
-      let lists= `
+    let expected = `
         </ul>
     </section>
     <footer>
@@ -34,11 +44,10 @@ function generateTodoHtml(todoItems) {
         </ul>
         <button>Clear completed</button>
     </footer>
-</section>`;
-    let expected=`${list+result+lists}`;
-  require(`fs`).writeFileSync('./1.txt',expected);
-  return expected;
+</section>
+`;
+    let result=lists+list+expected;require(`fs`).writeFileSync('./1.txt',result);
+    return result;
 }
-
 module.exports = {generateTodoHtml
 };
